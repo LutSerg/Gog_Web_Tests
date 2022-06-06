@@ -20,7 +20,7 @@ public class TestBase {
     void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
-        open("https://www.gog.com/ru/");
+        //open("https://www.gog.com/ru/");
 
         CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
 
