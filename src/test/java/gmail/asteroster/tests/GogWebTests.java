@@ -5,10 +5,10 @@ import gmail.asteroster.pages.ForGamesMenu;
 import gmail.asteroster.pages.ForSupportMenu;
 import gmail.asteroster.pages.SearchPanel;
 import io.qameta.allure.Description;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+
 
 @Tag("gogtests")
 public class GogWebTests extends TestBase {

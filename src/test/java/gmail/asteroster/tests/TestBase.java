@@ -1,8 +1,6 @@
 package gmail.asteroster.tests;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import gmail.asteroster.config.CredentialsConfig;
 import gmail.asteroster.helpers.Attach;
@@ -14,16 +12,20 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
+
 
 public class TestBase {
     @BeforeAll
    public static void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
         CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
+
         String login = config.login();
         String password = config.password();
         String browser = System.getProperty("browser", "Chrome");
-        String version = System.getProperty("version", "100");
+        String version = System.getProperty("version", "99");
         String browserSize = System.getProperty("browserSize", "1920x1080");
         String baseUrl = System.getProperty("url", "https://www.gog.com/ru/");
         String selenoid = System.getProperty("selenoid","selenoid.autotests.cloud/wd/hub");
@@ -32,7 +34,6 @@ public class TestBase {
         Configuration.browserSize = browserSize;
         Configuration.browserVersion = version;
         Configuration.remote = "https://" + config.login() + ":" + config.password() + "@" + selenoid;
-        //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);

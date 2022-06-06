@@ -15,7 +15,9 @@ dependencies {
             'com.github.javafaker:javafaker:1.0.2',
             'io.qameta.allure:allure-selenide:2.17.3',
             'org.aeonbits.owner:owner:1.0.12',
-            "org.assertj:assertj-core:3.19.0"
+            "org.assertj:assertj-core:3.22.0",
+            "io.rest-assured:rest-assured:4.3.1",
+            "io.qameta.allure:allure-rest-assured:2.17.3"
     )
 }
 
@@ -48,28 +50,8 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-task test5(type: Test) {
-    useJUnitPlatform {
-        includeTags "test5"
-    }
-}
-
-task systemProperties_tests(type: Test) {
-    useJUnitPlatform {
-        includeTags "systemProperties"
-    }
-}
-
-task owner_test(type: Test) {
-    useJUnitPlatform {
-        includeTags "owner"
-    }
-}
-
-task registration_test(type: Test) {
-    useJUnitPlatform {
-        includeTags "registration"
-    }
+test {
+    useJUnitPlatform()
 }
 
 task gogtests(type: Test) {
@@ -78,6 +60,4 @@ task gogtests(type: Test) {
     }
 }
 
-test {
-    useJUnitPlatform()
-}
+

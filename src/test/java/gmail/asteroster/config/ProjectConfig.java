@@ -12,13 +12,11 @@ public interface ProjectConfig extends Config {
 
     @DefaultValue("chrome")
     String browser();
-    @DefaultValue("91.0")
+    @DefaultValue("99.0")
     String browserVersion();
     @DefaultValue("1920x1080")
     String browserSize();
     String browserMobileView();
-    @DefaultValue("https://user1:1234@selenoid.autotests.cloud/wd/hub/")
     String remoteDriverUrl();
-    @DefaultValue("https://user1:1234@selenoid.autotests.cloud/video/")
     String videoStorage();
 }
