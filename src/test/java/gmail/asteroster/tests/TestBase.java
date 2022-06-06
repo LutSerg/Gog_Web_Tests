@@ -18,10 +18,6 @@ import static com.codeborne.selenide.Selenide.*;
 public class TestBase {
     @BeforeEach
     void setUp() {
-        String baseUrl = System.getProperty("url", "https://www.gog.com/ru/");
-        Configuration.baseUrl = baseUrl;
-        open(baseUrl);
-
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
@@ -30,8 +26,10 @@ public class TestBase {
         String browser = System.getProperty("browser", "Chrome");
         String version = System.getProperty("version", "100");
         String browserSize = System.getProperty("browserSize", "1920x1080");
+        String baseUrl = System.getProperty("url", "https://www.gog.com/ru/");
         String selenoid = System.getProperty("selenoid","selenoid.autotests.cloud/wd/hub");
 
+        Configuration.baseUrl = baseUrl;
         Configuration.browserSize = browserSize;
         Configuration.browserVersion = version;
         Configuration.remote = "https://" + config.login() + ":" + config.password() + "@" + selenoid;
