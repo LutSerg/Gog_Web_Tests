@@ -11,7 +11,6 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -19,7 +18,6 @@ public class TestBase {
     @BeforeEach
     void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
         CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
         String login = config.login();
         String password = config.password();
@@ -35,9 +33,6 @@ public class TestBase {
         Configuration.remote = "https://" + config.login() + ":" + config.password() + "@" + selenoid;
         //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
-
-
-
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
@@ -52,6 +47,4 @@ public class TestBase {
         Attach.addVideo();
         closeWebDriver();
     }
-
-
 }
