@@ -9,14 +9,15 @@ import gmail.asteroster.helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.*;
 
 public class TestBase {
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+   public static void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
         String login = config.login();
@@ -39,8 +40,13 @@ public class TestBase {
         Configuration.browserCapabilities = capabilities;
     }
 
+    @BeforeEach
+      public void beforeEach() {
+        open(baseUrl);
+    }
+
     @AfterEach
-    void addAttachments () {
+    public void addAttachments () {
         Attach.screenshotAs("Test screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
