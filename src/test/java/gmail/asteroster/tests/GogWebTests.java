@@ -20,8 +20,8 @@ public class GogWebTests extends TestBase {
     void titleTest() {
         BrowserTests.titleNameTest();
     }
-    /*
-    @Disabled
+
+
     @Test
     @Description("Консоль")
     @DisplayName("В консоли не должны быть ошибки")
@@ -29,7 +29,7 @@ public class GogWebTests extends TestBase {
         BrowserTests.consoleErrorsTest();
     }
 
-     */
+
 
     @Test
     @Description("Раздел Магазин")

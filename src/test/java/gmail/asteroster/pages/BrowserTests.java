@@ -1,6 +1,8 @@
 package gmail.asteroster.pages;
 
 
+import gmail.asteroster.helpers.DriverUtils;
+
 import static com.codeborne.selenide.Selenide.title;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,7 +15,7 @@ public class BrowserTests {
             assertThat(actualTitle).isEqualTo(expectedTitle);
         });
     }
-/*
+
     public static void consoleErrorsTest () {
         step("Console logs should not contain text 'SEVERE'", () -> {
             String consoleLogs = DriverUtils.getConsoleLogs();
@@ -22,5 +24,4 @@ public class BrowserTests {
         });
     }
 
- */
 }
