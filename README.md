@@ -1,44 +1,103 @@
-# Project in Allure TestOps with manual & automated tests
-<a target="_blank" href="https://allure.autotests.cloud/project/%s">allure.autotests.cloud/project/%s</a> (ask admin@qa.guru for access)
+# Проект автоматизированных тестов платформы цифрового магазина
+# <a target="_blank" href="https://www.gog.com/ru">GOG.com</a>
 
-# Jenkins job
-<a target="_blank" href="https://jenkins.autotests.cloud/job/%s">jenkins.autotests.cloud/job/%s</a>
-
-
-# USAGE examples
-
-### For run remote tests need fill remote.properties or to pass value:
-
-* browser (default chrome)
-* browserVersion (default 89.0)
-* browserSize (default 1920x1080)
-* browserMobileView (mobile device name, for example iPhone X)
-* remoteDriverUrl (url address from selenoid or grid)
-* videoStorage (url address where you should get video)
-* threads (number of threads)
+<img title="petshopmainpage" src="images/screenshots/gog_com.PNG">
 
 
-Run tests with filled remote.properties:
-```bash
-gradle clean test
+#Содежание
+1. [Стэк](#стэк)
+2. [Проверки](#проверки)
+3. [Запуск тестов](#запуск-тестов)
+4. [Сборка в Jenkins](#Сборка-в-Jenkins)
+5. [Allure отчёт](#allure-отчёт)
+6. [Видеопример прохождения теста](#видеопример-прохождения-теста)
+7. [Уведомления в Telegram](#уведомления-в-Telegram)
+
+## Стэк
+
+<p align="center">
+<img width="6%" title="IntelliJ IDEA" src="images/logo/Intelij_IDEA.svg">
+<img width="6%" title="Java" src="images/logo/Java.svg">
+<img width="6%" title="Selenide" src="images/logo/Selenide.svg">
+<img width="6%" title="Selenoid" src="images/logo/Selenoid.svg">
+<img width="6%" title="Allure Report" src="images/logo/Allure_Report.svg">
+<img width="6%" title="Gradle" src="images/logo/Gradle.svg">
+<img width="6%" title="JUnit5" src="images/logo/JUnit5.svg">
+<img width="6%" title="GitHub" src="images/logo/GitHub.svg">
+<img width="6%" title="Jenkins" src="images/logo/Jenkins.svg">
+<img width="6%" title="Telegram" src="images/logo/Telegram.svg">
+</p>
+
+## Проверки
+
+- Проверка на название в хедере тайтла
+- Проверка на наличие ошибок в консоли
+- Открытие детальной формы раздела Магазин
+- Открытие раздела "Новые игры"
+- Проверка появления кророткого меню подразделе "Приключения"
+- Переход в раздел "Заказы и оплата"
+- Проверика работы поиска после ввода названия игры
+
+## Запуск тестов
+
+#### Параметры запуска
+<code>SELENOIDURL</code> - URL хоста для удалённого запуска
+
+<code>BROWSER</code> – браузер, в котором будут выполняться тесты
+
+<code>VERSION</code> - версия браузера, в котором будут выполняться тесты
+
+<code>BROWSER_SIZE</code> – размер окна браузера, в котором будут выполняться тесты (по-умолчанию <code>1920x1080</code>)
+
+<code>BASEURL</code> – URL сайта в котором проходят тесты
+
+#### Локальный запуск с параметрами по-умолчанию
+```
+gradle clean gogtests
 ```
 
-Run tests with not filled remote.properties:
-```bash
-gradle clean -DremoteDriverUrl=https://%s:%s@selenoid.autotests.cloud/wd/hub/ -DvideoStorage=https://selenoid.autotests.cloud/video/ -Dthreads=1 test
+#### Локальный запуск с параметерами
+
 ```
-
-Serve report:
-```bash
-allure serve build/allure-results
+gradle
+clean
+gogtests
+-Dselenoid=${SELENOIDURL}
+-Dbrowser=${BROWSER}
+-Dversion=${VERSION}
+-DbaseUrl=${BASEURL}
+-DbrowserSize=${BROWSERSIZE}
 ```
-
-
-###### For further development there are some example tests in src/test/java/cloud.autotests/tests/demowebshop
-* remove @Disabled("...") annotation to run tests
-```bash
-gradle clean demowebshop
+#### Запуск с параметрами в Jenkins
 ```
+clean gogtests
+-Dselenoid=${SELENOIDURL}
+-Dbrowser=${BROWSER}
+-Dversion=${VERSION}
+-DbaseUrl=${BASEURL}
+-DbrowserSize=${BROWSERSIZE}
+```
+## Сборка в Jenkins
+<a target="_blank" href="https://jenkins.autotests.cloud/job/gogwebtests_1_LutSerge/">Сборка</a>
 
-:heart: <a target="_blank" href="https://qa.guru">qa.guru</a><br/>
-:blue_heart: <a target="_blank" href="https://t.me/qa_automation">t.me/qa_automation</a>
+## Allure отчёт
+<p align="left">
+<img title="Allure_report" src="images/screenshots/allure.PNG" width="1000">
+</p>
+
+## Allure TestOps отчет
+
+<p align="left">
+<img title="AllureTestOps_report" src="images/screenshots/allure_testOps.PNG" width="1000">
+</p>
+
+## Уведомления в Telegram
+
+<p align="left">
+<img title="telegram_report" src="images/screenshots/telegram.PNG" width="400">
+</p>
+
+## Видеопример прохождения теста
+<p align="left">
+<img title="gog_video_search" src="images/gif/video_search_gog.gif" width="1000">
+</p>
