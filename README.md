@@ -1,10 +1,9 @@
-# Проект автоматизированных тестов платформы цифрового магазина
-# <a target="_blank" href="https://www.gog.com/ru">GOG.com</a>
+# Проект автоматизированных тестов платформы цифрового магазина [GOG.com](https://www.gog.com/ru)
 
 <img title="petshopmainpage" src="images/screenshots/gog_com.PNG">
 
-
 #Содежание
+
 1. [Стэк](#стэк)
 2. [Проверки](#проверки)
 3. [Запуск тестов](#запуск-тестов)
